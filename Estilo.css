@@ -1,0 +1,376 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #3D0D0D; /* Fundo geral: Vermelho muito escuro, quase preto avermelhado */
+    color: #FFFFFF; /* Branco puro: Cor do texto geral para máximo contraste */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #661A1A; /* Vermelho predominante da capa para o container principal */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 600px;
+}
+
+.conteudo {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 80px; /* Espaço para a barra de status e botões fixos */
+}
+
+.conteudo h1, .conteudo h2 {
+    color: #FFCC00; /* Amarelo Ouro vibrante da capa - Cor dos títulos */
+    margin-bottom: 20px;
+}
+
+.conteudo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Regra de estilo para parágrafos do conteúdo principal com formatação ABNT-like */
+.conteudo p {
+    line-height: 1.5; /* Espaçamento entre as linhas: 1.5 */
+    margin-bottom: 0; /* Remove a margem inferior padrão para usar padding-bottom */
+    padding-bottom: 10px; /* Adiciona espaçamento entre parágrafos (simulando 0pt antes e depois) */
+    max-width: 600px; /* Largura máxima para centralizar o bloco de texto */
+    text-align: justify; /* Alinha o texto à esquerda e à direita */
+    padding-left: 15px; /* Adiciona um padding padrão nas laterais */
+    padding-right: 15px; /* Adiciona um padding padrão nas laterais */
+    margin-left: auto; /* Centraliza o bloco de texto horizontalmente */
+    margin-right: auto; /* Centraliza o bloco de texto horizontalmente */
+    text-indent: 1.25cm; /* Recuo da primeira linha: 1.25cm (padrão ABNT) */
+}
+
+/* Garante que o último parágrafo de uma sequência não tenha padding-bottom extra */
+.conteudo p:last-of-type {
+    padding-bottom: 0;
+}
+
+.botoes-navegacao button,
+.botoes-interativos button,
+.popup-actions button {
+    background-color: #336666; /* Verde Azulado Escuro - Cor dos botões normais (complementar ao vermelho) */
+    color: #FFFFFF; /* Branco puro - Cor do texto dos botões */
+    border: none;
+    padding: 12px 25px;
+    margin: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.botoes-navegacao button:hover,
+.botoes-interativos button:hover,
+.popup-actions button:hover {
+    background-color: #FFCC00; /* Amarelo Ouro da capa - Cor de hover dos botões */
+    color: #3D0D0D; /* Vermelho Escuro - Contraste para o texto no hover */
+}
+
+.botoes-navegacao {
+    margin-top: 20px;
+}
+
+/* Barra de Status e Botões Fixos */
+.barra-status, .botoes-fixos {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4C1414; /* Vermelho mais escuro para a barra */
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #7F2626; /* Borda sutil */
+}
+
+.barra-status span {
+    font-weight: bold;
+    margin: 0 10px;
+    color: #FFCC00; /* Amarelo Ouro - Cor do texto na barra de status */
+}
+
+.botoes-fixos button {
+    background-color: #7F2626; /* Vermelho escuro para botões fixos */
+    color: #FFFFFF; /* Branco puro */
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.botoes-fixos button:hover {
+    background-color: #FFCC00; /* Amarelo Ouro - Hover para botões fixos */
+    color: #3D0D0D;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Popups */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #661A1A; /* Vermelho predominante da capa - Fundo dos popups */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.status-popup-content {
+    width: 95%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .status-popup-content {
+        padding: 15px;
+    }
+}
+
+.status-popup-content h2 {
+    color: #FFCC00; /* Amarelo Ouro - Títulos de popup */
+    margin-bottom: 20px;
+}
+
+.status-popup-content .atributos,
+.status-popup-content .inventario {
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #7F2626; /* Borda para seções de atributos/inventário */
+    border-radius: 8px;
+}
+
+.atributo-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.atributo-item label {
+    flex: 0 0 auto;
+    min-width: 80px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.atributo-item input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #7F2626; /* Borda dos inputs */
+    border-radius: 5px;
+    background-color: #4C1414; /* Fundo dos inputs */
+    color: #FFFFFF; /* Texto dos inputs */
+    margin-right: 5px;
+}
+
+.atributo-item button {
+    padding: 8px 12px;
+    background-color: #7F2626; /* Botões de ajuste e fixar */
+    color: #FFFFFF; /* Texto dos botões de ajuste */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.atributo-item button.btn-fixar {
+    background-color: #CC6600; /* Laranja avermelhado - Tom para fixar */
+}
+
+.atributo-item button.btn-fixar:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.atributo-item button.btn-ajuste {
+    background-color: #CC6600; /* Laranja avermelhado para + / - */
+}
+
+.inventario-secao {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #7F2626; /* Borda das seções de inventário */
+    border-radius: 8px;
+}
+
+.inventario-secao h4 {
+    color: #FFCC00; /* Amarelo Ouro - Títulos de inventário */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.inventario-secao input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 8px;
+    border: 1px solid #7F2626; /* Borda do input de inventário */
+    border-radius: 5px;
+    background-color: #4C1414; /* Fundo do input de inventário */
+    color: #FFFFFF; /* Texto do input de inventário */
+    margin-right: 5px;
+}
+
+.inventario-secao button {
+    padding: 8px 15px;
+    background-color: #CC6600; /* Laranja avermelhado - Botão adicionar inventário */
+    color: #FFFFFF; /* Texto do botão adicionar */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.inventario-secao ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.inventario-secao li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7F2626; /* Fundo dos itens da lista */
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.inventario-secao li button.remover-item {
+    background-color: #CC6600; /* Laranja avermelhado para remover */
+    padding: 5px 8px;
+    font-size: 0.8em;
+}
+
+.popup-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Popup de Dados */
+.dados-popup-content {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dados-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dado {
+    width: 80px;
+    height: 80px;
+    background-color: #FFCC00; /* Amarelo Ouro para o dado */
+    border: 3px solid #7F2626; /* Borda do dado */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: #3D0D0D; /* Texto do dado (um tom escuro do vermelho de fundo) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: none;
+}
+
+.dado.rolando {
+    animation: rolarDado 0.5s infinite alternate;
+}
+
+@keyframes rolarDado {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+#resultadoDados {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FFCC00; /* Amarelo Ouro - Resultado do dado */
+}
+
+/* Regra de estilo para parágrafos do popup de texto com formatação ABNT-like */
+.texto-popup-content p {
+    line-height: 1.5; /* Espaçamento entre as linhas: 1.5 */
+    margin-bottom: 0; /* Remove a margem inferior padrão */
+    padding-bottom: 10px; /* Adiciona espaçamento entre parágrafos */
+    text-align: justify; /* Alinha o texto à esquerda e à direita */
+    text-indent: 1.25cm; /* Recuo da primeira linha: 1.25cm (padrão ABNT) */
+    color: #FFFFFF; /* Cor do texto (branco puro, como os outros textos gerais) */
+}
+
+/* Garante que o último parágrafo do popup de texto não tenha padding-bottom extra */
+.texto-popup-content p:last-of-type {
+    padding-bottom: 0;
+}
+
+/* Estilo para o título (h3) dentro do popup de texto */
+.texto-popup-content h3 {
+    color: #FFCC00; /* Amarelo Ouro para o título do popup de texto */
+    margin-bottom: 15px; /* Mantém o espaçamento inferior */
+}
+
+/* Estilo para o texto forte (<strong>) dentro dos popups de texto (para ser amarelo) */
+.texto-popup-content p strong {
+    color: #FFCC00; /* Amarelo Ouro para palavras em negrito dentro dos popups */
+}

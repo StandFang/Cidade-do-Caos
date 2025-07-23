@@ -1,0 +1,68 @@
+{
+    "historia_intro": {
+        "titulo": "A Entrada da Cidadela",
+        "texto": "Após dias de viagem, você finalmente avista as imponentes muralhas da Cidadela do Caos. O portão principal está entreaberto, revelando uma escuridão convidativa. O ar está pesado, e um silêncio inquietante paira sobre o local. Você está pronto para entrar?",
+        "imagem": "portao_cidadela.jpg",
+        "opcoes": [
+            {
+                "texto": "Entrar pelo portão principal",
+                "destino": "portao_principal"
+            },
+            {
+                "texto": "Procurar uma entrada alternativa",
+                "destino": "entrada_alternativa"
+            }
+        ]
+    },
+    "portao_principal": {
+        "titulo": "No Corredor Escuro",
+        "texto": "Você empurra o pesado portão, que range maciçamente, e adentra um corredor úmido e escuro. O som dos seus passos ecoa nas paredes de pedra. No final do corredor, você vê uma tocha bruxuleante e ouve murmúrios indistintos.",
+        "imagem": "corredor_escuro.jpg",
+        "opcoes": [
+            {
+                "texto": "Avançar cautelosamente em direção à tocha",
+                "destino": "encontro_guarda"
+            },
+            {
+                "texto": "Tentar se esconder nas sombras",
+                "destino": "esconder_sombras"
+            }
+        ]
+    },
+    "entrada_alternativa": {
+        "titulo": "Rondando as Muralhas",
+        "texto": "Você decide contornar as muralhas, procurando por uma passagem menos óbvia. Após alguns minutos, você encontra uma fresta estreita na pedra, quase imperceptível. Parece que apenas uma pessoa pequena conseguiria passar.",
+        "imagem": "fresta_muralha.jpg",
+        "opcoes": [
+            {
+                "texto": "Tentar se espremer pela fresta",
+                "destino": "passagem_secreta"
+            },
+            {
+                "texto": "Desistir e voltar ao portão principal",
+                "destino": "historia_intro"
+            }
+        ]
+    },
+    "encontro_guarda": {
+        "titulo": "O Guarda Adormecido",
+        "texto": "Ao se aproximar, você percebe que os murmúrios vêm de um guarda goblino adormecido, recostado contra a parede. Ele ronca alto, e sua arma está largada ao lado. Parece uma oportunidade fácil, mas o menor ruído pode acordá-lo.",
+        "imagem": "guarda_goblino.jpg",
+        "opcoes": [
+            {
+                "texto": "Tentar passar sorrateiramente",
+                "destino": "passar_sorrateiramente"
+            },
+            {
+                "texto": "Atacar o guarda adormecido",
+                "destino": "atacar_guarda"
+            }
+        ]
+    },
+    "passagem_secreta": {
+        "titulo": "Caindo na Armadilha",
+        "texto": "Você se espreme pela fresta, mas a passagem é mais traiçoeira do que parecia. De repente, o chão cede sob seus pés, e você cai em uma cova escura, cheia de espinhos afiados. Sua aventura termina aqui.",
+        "imagem": "armadilha_espinhos.jpg",
+        "opcoes": []
+    }
+}

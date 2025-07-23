@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cidadela do Caos</title>
+    <link rel="stylesheet" href="Estilo.css"> </head>
+<body>
+    <div class="container">
+        <div id="conteudo" class="conteudo">
+            </div>
+
+        <div id="barraStatus" class="barra-status hidden">
+            <span>Habilidade: <span id="displayHabilidade"></span></span>
+            <span>Energia: <span id="displayEnergia"></span></span>
+            <span>Sorte: <span id="displaySorte"></span></span>
+            <span>Ouro: <span id="displayOuro"></span></span>
+        </div>
+
+        <div id="botoesFixos" class="botoes-fixos hidden">
+            <button id="btnStatus">Ficha</button>
+            <button id="btnDados">Dados</button>
+            <button id="btnSalvarJogo">Salvar Jogo</button>
+            <button id="btnCarregarJogo">Carregar Jogo</button>
+        </div>
+    </div>
+
+    <div id="statusPopup" class="popup-overlay hidden">
+        <div class="popup-content status-popup-content">
+            <h2>Ficha de Status</h2>
+            <div class="atributos">
+                <div class="atributo-item">
+                    <label for="inputHabilidade">Habilidade:</label>
+                    <input type="number" id="inputHabilidade" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="habilidade">Fixar</button>
+                    <input type="number" id="ajusteHabilidade" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="habilidade" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="habilidade" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputEnergia">Energia:</label>
+                    <input type="number" id="inputEnergia" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="energia">Fixar</button>
+                    <input type="number" id="ajusteEnergia" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="energia" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="energia" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputSorte">Sorte:</label>
+                    <input type="number" id="inputSorte" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="sorte">Fixar</button>
+                    <input type="number" id="ajusteSorte" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="sorte" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="sorte" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputOuro">Ouro:</label>
+                    <input type="number" id="inputOuro" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="ouro">Fixar</button>
+                    <input type="number" id="ajusteOuro" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="ouro" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="ouro" data-action="plus">+</button>
+                </div>
+            </div>
+
+            <div class="inventario">
+                <h3>Inventário</h3>
+                <div class="inventario-secao">
+                    <h4>Magias</h4>
+                    <input type="text" id="inputMagia" placeholder="Nova Magia">
+                    <button id="addMagia">Adicionar</button>
+                    <ul id="listaMagias"></ul>
+                </div>
+                <div class="inventario-secao">
+                    <h4>Encantos</h4>
+                    <input type="text" id="inputEncanto" placeholder="Novo Encanto">
+                    <button id="addEncanto">Adicionar</button>
+                    <ul id="listaEncantos"></ul>
+                </div>
+                <div class="inventario-secao">
+                    <h4>Equipamentos</h4>
+                    <input type="text" id="inputEquipamento" placeholder="Novo Equipamento">
+                    <button id="addEquipamento">Adicionar</button>
+                    <ul id="listaEquipamentos"></ul>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button id="btnResetarFicha">Resetar Ficha</button> <button id="btnFecharStatus">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="dadosPopup" class="popup-overlay hidden">
+        <div class="popup-content dados-popup-content">
+            <h2>Rolagem de Dados</h2>
+            <div class="dados-display">
+                <div class="dado" id="dado1">?</div>
+                <div class="dado" id="dado2">?</div>
+            </div>
+            <p>Resultado: <span id="resultadoDados"></span></p>
+            <button id="btnRolarDados">Rolar Dados</button>
+            <button id="btnFecharDados">Fechar</button>
+        </div>
+    </div>
+
+    <div id="textoPopup" class="popup-overlay hidden">
+        <div class="popup-content texto-popup-content">
+            <h3 id="textoPopupTitulo"></h3>
+            <p id="textoPopupConteudo"></p>
+            <button id="btnFecharTextoPopup">Fechar</button>
+        </div>
+    </div>
+
+    <script src="Funcoes.js"></script> </body>
+</html>
