@@ -252,59 +252,108 @@ body {
     margin-bottom: 10px;
 }
 
-.inventario-secao input[type="text"] {
-    width: calc(100% - 100px);
+/* Estilo para o SELECT de encantos */
+.inventario-secao select {
     padding: 8px;
-    border: 1px solid #7F2626; /* Borda do input de inventário */
+    border: 1px solid #7F2626;
     border-radius: 5px;
-    background-color: #4C1414; /* Fundo do input de inventário */
-    color: #FFFFFF; /* Texto do input de inventário */
+    background-color: #4C1414;
+    color: #FFFFFF;
+    margin-right: 5px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+/* Estilo para o input de quantidade de encanto */
+#inputEncantoQuantidade {
+    width: 50px;
+    margin-left: 5px;
+}
+
+.inventario-secao input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #7F2626;
+    border-radius: 5px;
+    background-color: #4C1414;
+    color: #FFFFFF;
     margin-right: 5px;
 }
 
 .inventario-secao button {
     padding: 8px 15px;
-    background-color: #CC6600; /* Laranja avermelhado - Botão adicionar inventário */
-    color: #FFFFFF; /* Texto do botão adicionar */
+    background-color: #CC6600;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
+/* Estilos para lista de itens com contador (Encantos e Equipamentos) */
 .inventario-secao ul {
     list-style: none;
     padding: 0;
     margin-top: 10px;
 }
 
-.inventario-secao li {
+.item-lista {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #7F2626; /* Fundo dos itens da lista */
+    background-color: #7F2626;
     padding: 8px 10px;
     border-radius: 4px;
     margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.item-lista .item-nome {
+    cursor: pointer;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.item-lista .item-quantidade-controle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.item-lista .item-quantidade {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.item-lista .btn-ajuste-item {
+    background-color: #CC6600;
+    color: #FFFFFF;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    min-width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-lista .btn-ajuste-item:hover {
+    background-color: #e07b00;
 }
 
 .inventario-secao li button.remover-item {
-    background-color: #CC6600; /* Laranja avermelhado para remover */
-    padding: 5px 8px;
-    font-size: 0.8em;
-}
-
-.popup-actions {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    margin-left: 10px;
 }
 
 /* Popup de Dados */
 .dados-popup-content {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -315,21 +364,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin: 20px 0;
 }
 
 .dado {
     width: 80px;
     height: 80px;
-    background-color: #FFCC00; /* Amarelo Ouro para o dado */
-    border: 3px solid #7F2626; /* Borda do dado */
+    background-color: #FFCC00;
+    border: 3px solid #7F2626;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3em;
     font-weight: bold;
-    color: #3D0D0D; /* Texto do dado (um tom escuro do vermelho de fundo) */
+    color: #3D0D0D;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: none;
 }
@@ -346,31 +396,40 @@ body {
 #resultadoDados {
     font-size: 1.5em;
     font-weight: bold;
-    color: #FFCC00; /* Amarelo Ouro - Resultado do dado */
+    color: #FFCC00;
+    margin-bottom: 15px;
+}
+
+.dados-popup-content button[data-num-dados] {
+    background-color: #336666;
+    color: #FFFFFF;
+    margin: 5px;
+}
+
+.dados-popup-content button[data-num-dados]:hover {
+    background-color: #FFCC00;
+    color: #3D0D0D;
 }
 
 /* Regra de estilo para parágrafos do popup de texto com formatação ABNT-like */
 .texto-popup-content p {
-    line-height: 1.5; /* Espaçamento entre as linhas: 1.5 */
-    margin-bottom: 0; /* Remove a margem inferior padrão */
-    padding-bottom: 10px; /* Adiciona espaçamento entre parágrafos */
-    text-align: justify; /* Alinha o texto à esquerda e à direita */
-    text-indent: 1.25cm; /* Recuo da primeira linha: 1.25cm (padrão ABNT) */
-    color: #FFFFFF; /* Cor do texto (branco puro, como os outros textos gerais) */
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    text-align: justify;
+    text-indent: 1.25cm;
+    color: #FFFFFF;
 }
 
-/* Garante que o último parágrafo do popup de texto não tenha padding-bottom extra */
 .texto-popup-content p:last-of-type {
     padding-bottom: 0;
 }
 
-/* Estilo para o título (h3) dentro do popup de texto */
 .texto-popup-content h3 {
-    color: #FFCC00; /* Amarelo Ouro para o título do popup de texto */
-    margin-bottom: 15px; /* Mantém o espaçamento inferior */
+    color: #FFCC00;
+    margin-bottom: 15px;
 }
 
-/* Estilo para o texto forte (<strong>) dentro dos popups de texto (para ser amarelo) */
 .texto-popup-content p strong {
-    color: #FFCC00; /* Amarelo Ouro para palavras em negrito dentro dos popups */
+    color: #FFCC00;
 }
