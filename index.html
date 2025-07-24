@@ -3,161 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição Quadrilha Solo de Nazaré</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom right, #FFD700, #FF6347); /* Cores vibrantes de festa junina */
-        }
-        .modal {
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        }
-        .modal.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .modal.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-    </style>
+    <title>A Cidadela do Caos</title>
+    <link rel="stylesheet" href="Estilo.css">
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
-
-    <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full border-4 border-dashed border-red-500">
-        <h1 class="text-3xl font-bold text-center text-red-700 mb-6">Inscrição Quadrilha Solo de Nazaré</h1>
-        <p class="text-center text-gray-600 mb-6">Preencha o formulário para fazer parte da nossa quadrilha!</p>
-
-        <form id="quadrilhaForm">
-            <div class="mb-4">
-                <label for="nome" class="block text-gray-700 text-sm font-bold mb-2">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                       required>
+<body>
+    <div class="container">
+        <div id="conteudo" class="conteudo">
             </div>
 
-            <div class="mb-4">
-                <label for="idade" class="block text-gray-700 text-sm font-bold mb-2">Idade:</label>
-                <input type="number" id="idade" name="idade" placeholder="Sua idade" min="10" max="99"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                       required>
-            </div>
+        <div id="barraStatus" class="barra-status hidden">
+            <span>Habilidade: <span id="displayHabilidade"></span></span>
+            <span>Energia: <span id="displayEnergia"></span></span>
+            <span>Sorte: <span id="displaySorte"></span></span>
+            <span>Ouro: <span id="displayOuro"></span></span>
+            <span>Magia: <span id="displayMagia"></span></span>
+        </div>
 
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Sexo:</label>
-                <div class="flex items-center mb-2">
-                    <input type="radio" id="sexoMasculino" name="sexo" value="masculino" class="mr-2" required>
-                    <label for="sexoMasculino" class="text-gray-700">Masculino</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" id="sexoFeminino" name="sexo" value="feminino" class="mr-2">
-                    <label for="sexoFeminino" class="text-gray-700">Feminino</label>
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label for="whatsapp" class="block text-gray-700 text-sm font-bold mb-2">Número de WhatsApp (com DDD):</label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                       required>
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Participa de algum dos seguintes movimentos de jovens?</label>
-                <div class="flex items-center mb-2">
-                    <input type="checkbox" id="mac" name="movimento" value="MAC" class="mr-2 rounded">
-                    <label for="mac" class="text-gray-700">MAC (Movimento de Adolescentes com Cristo)</label>
-                </div>
-                <div class="flex items-center mb-2">
-                    <input type="checkbox" id="ejc" name="movimento" value="EJC" class="mr-2 rounded">
-                    <label for="ejc" class="text-gray-700">EJC (Encontro de Jovens com Cristo)</label>
-                </div>
-                <div class="flex items-center">
-                    <input type="checkbox" id="eac" name="movimento" value="EAC" class="mr-2 rounded">
-                    <label for="eac" class="text-gray-700">EAC (Encontro de Adolescentes com Cristo)</label>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-center">
-                <button type="submit"
-                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
-                    Avançar
-                </button>
-            </div>
-        </form>
+        <div id="botoesFixos" class="botoes-fixos hidden">
+            <button id="btnStatus">Ficha</button>
+            <button id="btnDados">Dados</button>
+            <button id="btnSalvarJogo">Salvar Jogo</button>
+            <button id="btnCarregarJogo">Carregar Jogo</button>
+            <button id="btnRegras">Regras</button> </div>
     </div>
 
-    <!-- Modal para "Não pode entrar" -->
-    <div id="cannotEnterModal" class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm mx-auto border-4 border-red-500">
-            <p class="text-xl font-semibold text-red-700 mb-4">Atenção!</p>
-            <p class="text-gray-800 mb-6">Pessoas que participam de movimentos como MAC, EJC ou EAC não podem entrar na quadrilha.</p>
-            <div class="flex flex-col space-y-3">
-                <button onclick="closeModal('cannotEnterModal')"
-                        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
-                    Fechar
-                </button>
-                <button onclick="cancelRegistration()"
-                        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
-                    Cancelar inscrição no movimento de jovens
-                </button>
+    <div id="statusPopup" class="popup-overlay hidden">
+        <div class="popup-content status-popup-content">
+            <h2>Ficha de Status</h2>
+            <div class="atributos">
+                <div class="atributo-item">
+                    <label for="inputHabilidade">Habilidade:</label>
+                    <input type="number" id="inputHabilidade" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="habilidade">Fixar</button>
+                    <input type="number" id="ajusteHabilidade" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="habilidade" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="habilidade" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputEnergia">Energia:</label>
+                    <input type="number" id="inputEnergia" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="energia">Fixar</button>
+                    <input type="number" id="ajusteEnergia" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="energia" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="energia" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputSorte">Sorte:</label>
+                    <input type="number" id="inputSorte" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="sorte">Fixar</button>
+                    <input type="number" id="ajusteSorte" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="sorte" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="sorte" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputOuro">Ouro:</label>
+                    <input type="number" id="inputOuro" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="ouro">Fixar</button>
+                    <input type="number" id="ajusteOuro" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="ouro" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="ouro" data-action="plus">+</button>
+                </div>
+                <div class="atributo-item">
+                    <label for="inputMagia">Magia:</label>
+                    <input type="number" id="inputMagia" class="valor-inicial" placeholder="Inicial">
+                    <button class="btn-fixar" data-attr="magia">Fixar</button>
+                    <input type="number" id="ajusteMagia" class="ajuste-atual" placeholder="Atual">
+                    <button class="btn-ajuste" data-attr="magia" data-action="minus">-</button>
+                    <button class="btn-ajuste" data-attr="magia" data-action="plus">+</button>
+                </div>
+            </div>
+
+            <div class="inventario">
+                <h3>Inventário</h3>
+                <div class="inventario-secao">
+                    <h4>Encantos</h4>
+                    <select id="selectEncanto">
+                        <option value="">Selecione um Encanto</option>
+                    </select>
+                    <input type="number" id="inputEncantoQuantidade" placeholder="Qtd." min="1" value="1" style="width: 50px;">
+                    <button id="addEncanto">Adicionar</button>
+                    <ul id="listaEncantos"></ul>
+                </div>
+                <div class="inventario-secao">
+                    <h4>Equipamentos</h4>
+                    <input type="text" id="inputEquipamento" placeholder="Novo Equipamento">
+                    <button id="addEquipamento">Adicionar</button>
+                    <ul id="listaEquipamentos"></ul>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button id="btnResetarFicha">Resetar Ficha</button>
+                <button id="btnFecharStatus">Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal para "Bem-vindo" -->
-    <div id="welcomeModal" class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm mx-auto border-4 border-green-500">
-            <p class="text-xl font-semibold text-green-700 mb-4">Parabéns!</p>
-            <p class="text-gray-800 mb-6">Seja bem-vindo(a) à quadrilha <span class="font-bold text-lg text-blue-700">Solo de Nazaré</span>! Entraremos em contato via WhatsApp em breve.</p>
-            <button onclick="closeModal('welcomeModal')"
-                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
-                Fechar
-            </button>
+    <div id="dadosPopup" class="popup-overlay hidden">
+        <div class="popup-content dados-popup-content">
+            <h2>Rolagem de Dados</h2>
+            <div class="dados-display">
+                <div id="dado1" class="dado">?</div>
+                <div id="dado2" class="dado">?</div>
+            </div>
+            <p>Resultado: <span id="resultadoDados"></span></p>
+            <button id="btnRolar1Dado" data-num-dados="1">Rolar 1 Dado</button>
+            <button id="btnRolar2Dados" data-num-dados="2">Rolar 2 Dados</button>
+            <button id="btnFecharDados">Fechar</button>
         </div>
     </div>
 
-    <script>
-        document.getElementById('quadrilhaForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+    <div id="customAlertDialog" class="popup-overlay hidden">
+        <div class="popup-content">
+            <h3 id="customAlertTitle">Aviso</h3>
+            <p id="customAlertMessage"></p>
+            <div class="popup-actions">
+                <button id="customAlertOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
 
-            const macChecked = document.getElementById('mac').checked;
-            const ejcChecked = document.getElementById('ejc').checked;
-            const eacChecked = document.getElementById('eac').checked;
+    <div id="customConfirmDialog" class="popup-overlay hidden">
+        <div class="popup-content">
+            <h3 id="customConfirmTitle">Confirmação</h3>
+            <p id="customConfirmMessage"></p>
+            <div class="popup-actions">
+                <button id="customConfirmYesBtn">Sim</button>
+                <button id="customConfirmNoBtn">Não</button>
+            </div>
+        </div>
+    </div>
 
-            if (macChecked || ejcChecked || eacChecked) {
-                showModal('cannotEnterModal');
-            } else {
-                showModal('welcomeModal');
-                // Aqui você pode capturar o número de WhatsApp se precisar enviá-lo para algum lugar
-                const whatsappNumber = document.getElementById('whatsapp').value;
-                console.log('Número de WhatsApp para contato:', whatsappNumber);
-            }
-        });
+    <div id="passwordPromptDialog" class="popup-overlay hidden">
+        <div class="popup-content">
+            <h3>Digite a Senha</h3>
+            <p>Por favor, digite a senha para prosseguir:</p>
+            <input type="password" id="passwordInput" class="custom-prompt-input">
+            <div class="popup-actions">
+                <button id="passwordSubmitBtn">Confirmar</button>
+                <button id="passwordCancelBtn">Cancelar</button>
+            </div>
+        </div>
+    </div>
 
-        function showModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('hidden');
-            modal.classList.add('visible');
-        }
+    <div id="textoPopup" class="popup-overlay hidden">
+        <div class="popup-content texto-popup-content">
+            <h3 id="textoPopupTitulo"></h3>
+            <p id="textoPopupConteudo"></p>
+            <button id="btnFecharTextoPopup">Fechar</button>
+        </div>
+    </div>
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('visible');
-            modal.classList.add('hidden');
-        }
-
-        function cancelRegistration() {
-            // Aqui você pode adicionar lógica para o que acontece se a pessoa cancelar a inscrição no movimento
-            // Por exemplo, limpar o formulário e fechar o modal, ou redirecionar para outra página.
-            alert('Você optou por cancelar sua inscrição no movimento de jovens. Por favor, preencha o formulário novamente se desejar se inscrever na quadrilha.');
-            closeModal('cannotEnterModal');
-            document.getElementById('quadrilhaForm').reset(); // Limpa o formulário
-        }
-    </script>
+    <script src="Funcoes.js"></script>
 </body>
 </html>
-
